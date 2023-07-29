@@ -2,6 +2,8 @@ import React ,{useContext,useState}from 'react'
 import "@fortawesome/fontawesome-free/css/all.css";
 import { Link,useNavigate } from 'react-router-dom';
 import { StatesProvider } from '../States/states';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
     const initialFormState = {
@@ -14,9 +16,32 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formValues);
+        const response =await fetch('http://localhost:8000/user/signIn',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            email:formValues.email,
+            password:formValues.password
+          })
+        }) 
+    
+        const ans=await response.json();
+        if(!ans.success){
+            Faliurnotify();
+        }
+    
+        else {
+          
+          Successnotify();
+          localStorage.setItem("userEmail",formValues.email);
+          localStorage.setItem("authToken",ans.authToken);
+          console.log(localStorage.getItem("authToken"))
+          navigate('/');
+        }
     }
-
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({
@@ -31,6 +56,28 @@ export default function Login() {
     const SignUp=()=>{
         navigate('/signup');
     }
+
+    const Successnotify = () =>toast.success('LogIn successfully', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+   const Faliurnotify=()=>toast.info('Invalid username or password', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
     return (
         <div>
             <section className="vh-100">
@@ -83,6 +130,7 @@ export default function Login() {
                     </div>
                 </div>
             </section>
+          
         </div>
     )
 }

@@ -1,0 +1,22 @@
+/* styles.css */
+@keyframes borderBottomAnimation {
+    0% {
+      border-bottom: 2px solid transparent; 
+    }
+    100% {
+      border-bottom: 3px solid #3b5998;
+      border-radius: 2px; 
+    }
+  }
+  
+  .nav-item .nav-link {
+    border-bottom: 2px solid transparent;
+
+  }
+  
+  .nav-item .nav-link:hover {
+    padding: 5px;
+    animation: borderBottomAnimation 0.3s ease forwards;
+  }
+  
+  

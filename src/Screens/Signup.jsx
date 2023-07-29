@@ -20,9 +20,42 @@ export default function Signup() {
         navigate('/login');
     }
 
-    const handleSubmit = async (e) => {
+   
+
+    const handleSubmit =async (e) => {
         e.preventDefault();
-        console.log(formValues);
+        console.log('Submitted data:', formValues);
+        
+        const response=await fetch('http://localhost:8000/user/signUp', {
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                name:formValues.name,
+                email:formValues.email,
+                password:formValues.password,
+                ConfirmPassword:formValues.confermPassword
+            })
+        })
+
+        const ans=await response.json();
+        const error=ans.error;
+        if(!ans.success){
+           
+            if(error){
+                alert("Email already exists");
+            }
+            else{
+            alert("Invalid " + ans.errors[0].path);
+            }             
+        }
+        else{
+            navigate('/login');
+
+        }
+
+        // setFormValues(initialFormState);
     }
 
     const handleChange = (e) => {
