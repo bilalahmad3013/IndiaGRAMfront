@@ -1,21 +1,41 @@
 import React, {useContext, useEffect} from 'react'
-import Navbar from '../Compontnts/Navbar'
 import { StatesProvider } from '../States/states'
 import {Link, useNavigate } from 'react-router-dom';
 
 
 export default function Home() {
   const navigate=useNavigate();
-  if(!localStorage.getItem("authToken")){
-    navigate('/login');
-  }
+
+  function getCookie(name) {
+    const cookieArray = document.cookie.split(';');
+    for (let i = 0; i < cookieArray.length; i++) {
+        const cookie = cookieArray[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
+
+const authToken = getCookie('authToken');
+const userEmail = decodeURIComponent(getCookie("userEmail"));
+console.log(userEmail);
+console.log( authToken);
+
+if(!authToken && userEmail){
+   navigate('/login');
+}
+  
+
+ 
+ 
   
   const {setTitle}=useContext(StatesProvider);
     
   setTitle("Home")
 
  
-  
+
   return (
     <div style={{}}>
       

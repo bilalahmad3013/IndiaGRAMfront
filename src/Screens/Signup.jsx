@@ -3,7 +3,10 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { StatesProvider } from '../States/states';
 
+
+
 export default function Signup() {
+    const BASE_URL="http://localhost:8000";
     const initialFormState = {
         email: '',
         password: '',
@@ -26,7 +29,7 @@ export default function Signup() {
         e.preventDefault();
         console.log('Submitted data:', formValues);
         
-        const response=await fetch('http://localhost:8000/user/signUp', {
+        const response=await fetch(`${BASE_URL}/user/signUp`, {
             method:"POST",
             headers:{
                 'Content-Type':'application/json'
@@ -66,6 +69,9 @@ export default function Signup() {
         });
     }
 
+  
+  
+
     return (
         <div>
             <section class="vh-100">
@@ -103,10 +109,11 @@ export default function Signup() {
                                 <div class="divider d-flex align-items-center my-4">
                                     <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                                 </div>
-                                <Link class="btn btn-primary btn-lg btn-block" style={{ background: "#3b5998" }} to="#!"
+                                <a class="btn btn-primary btn-lg btn-block" style={{ background: "#3b5998" }} href="http://localhost:8000/user/auth/google"
                                     role="button">
                                     SignUp with &nbsp;<i class="fa-brands fa-google"> </i>
-                                </Link>
+                                </a>
+                                
                                 <button onClick={SignUp} class="btn btn-primary btn-lg btn-block" style={{ background: "#3b5998", marginLeft: "2%" }}>LogIn..?</button>
 
 

@@ -5,7 +5,10 @@ import { StatesProvider } from '../States/states';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 export default function Login() {
+    const BASE_URL="http://localhost:8000";
+    console.log(BASE_URL);
     const initialFormState = {
         email: '',
         password: '',
@@ -16,7 +19,7 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response =await fetch('http://localhost:8000/user/signIn',{
+        const response =await fetch(`${BASE_URL}/user/signIn`,{
           method:'POST',
           headers:{
             'Content-Type':'application/json'
@@ -35,9 +38,9 @@ export default function Login() {
         else {
           
           Successnotify();
-          localStorage.setItem("userEmail",formValues.email);
-          localStorage.setItem("authToken",ans.authToken);
-          console.log(localStorage.getItem("authToken"))
+          document.cookie=`authToken=${ans.authToken}`;
+          document.cookie=`userEmail=${formValues.email}`;
+          console.log(ans);
           navigate('/');
         }
     }
@@ -118,10 +121,10 @@ export default function Login() {
                                     <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                                 </div>
 
-                                <Link className="btn btn-primary btn-lg btn-block" style={{background: "#3b5998"}} to="#!"
+                                <a className="btn btn-primary btn-lg btn-block" style={{background: "#3b5998"}} href="http://localhost:8000/user/auth/google?prompt=select_account"
                                     role="button">
                                   Login with &nbsp;<i className="fa-brands fa-google"> </i> 
-                                </Link>
+                                </a>
                                 <button onClick={SignUp} className="btn btn-primary btn-lg btn-block" style={{background: "#3b5998", marginLeft:"2%"}}>SignUp..?</button>
                               
 
