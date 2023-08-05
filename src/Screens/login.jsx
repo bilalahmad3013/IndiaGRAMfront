@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
-    const BASE_URL="http://localhost:8000";
+    const BASE_URL=process.env.REACT_APP_BASE_URL;
     console.log(BASE_URL);
     const initialFormState = {
         email: '',

@@ -19,8 +19,7 @@ export default function Home() {
 
 const authToken = getCookie('authToken');
 const userEmail = decodeURIComponent(getCookie("userEmail"));
-console.log(userEmail);
-console.log( authToken);
+
 
 if(!authToken && userEmail){
    navigate('/login');

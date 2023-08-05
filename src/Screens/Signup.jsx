@@ -6,7 +6,7 @@ import { StatesProvider } from '../States/states';
 
 
 export default function Signup() {
-    const BASE_URL="http://localhost:8000";
+    const BASE_URL=process.env.REACT_APP_BASE_URL;
     const initialFormState = {
         email: '',
         password: '',
