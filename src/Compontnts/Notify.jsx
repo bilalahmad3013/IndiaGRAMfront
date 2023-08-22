@@ -10,7 +10,7 @@ export default function Notify({closeModal }) {
   const {setN } = useContext(StatesProvider);
 
   const handleRead =()=>{
-    // setN(0);
+    setN(0);
   }
    
   
