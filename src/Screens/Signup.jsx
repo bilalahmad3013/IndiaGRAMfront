@@ -2,6 +2,8 @@ import React, { useContext ,useState} from 'react'
 import "@fortawesome/fontawesome-free/css/all.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { StatesProvider } from '../States/states';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -19,6 +21,44 @@ export default function Signup() {
     const [formValues, setFormValues] = useState(initialFormState);
     
     setTitle("SignUp")
+
+
+    const Successnotify = () => toast.info('Email or username already exists', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    
+      const notify = () => toast.info('Enter valid credentials', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+       
+      const notify1 = () => toast.info('SignUp successfully', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      
+      
+
     const SignUp = () => {
         navigate('/login');
     }
@@ -47,13 +87,14 @@ export default function Signup() {
         if(!ans.success){
            
             if(error){
-                alert("Email already exists");
+                Successnotify();
             }
             else{
-            alert("Invalid " + ans.errors[0].path);
+            notify();
             }             
         }
         else{
+            notify1();
             navigate('/login');
 
         }

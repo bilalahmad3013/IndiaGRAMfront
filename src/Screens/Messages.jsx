@@ -1,13 +1,14 @@
-import React, {useContext} from 'react'
-import { StatesProvider } from '../States/states'
+import React, { useContext, useState, useEffect } from 'react';
+import { StatesProvider } from '../States/states';
+import socketIO from 'socket.io-client';
 
-export default function Messages() {
-  const {setTitle}=useContext(StatesProvider);
-    
-  setTitle("Messages");
+export default function Messages({ user }) {
+  const { setTitle } = useContext(StatesProvider);
+ 
+
   return (
     <div>
-      
+     
     </div>
-  )
+  );
 }

@@ -1,0 +1,78 @@
+.custom-type-animation {
+    font-size: 3em;
+    display: inline-block;
+    margin-left: 25%;
+    margin-top: 5%;
+  }
+  @media screen and (max-width: 900px) {
+    .custom-type-animation {
+      font-size: 2em; 
+      margin-left: 20%; 
+      margin-top: 2%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .custom-type-animation {
+      font-size: 1.5em; 
+      margin-left: 10%; 
+      margin-top: 2%;
+    }
+  }
+  .file-input-container {
+    position: relative;
+    width: 200px;
+    margin-left: 18%;
+}
+
+.image-upload-form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.file-input-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.input-file {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.custom-file-label {
+    display: block;
+    background-color:#3b5998;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-file-label:hover {
+    background-color: #2980b9;
+}
+
+.caption-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    background-color:#3b5998;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

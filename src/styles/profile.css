@@ -1,0 +1,176 @@
+#biodiv {
+    margin-left: 49%;
+}
+
+@media (max-width: 1008px) {
+
+    #profile-modals {
+        font-size: 10px;
+        width: 20%;
+        margin-left: 3%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    #header {
+        width: 90%;
+    }
+
+    #biodiv {
+        margin-left: 42%;
+    }
+
+    #profile-modals {
+        font-size: 10px;
+        width: 20%;
+        margin-left: 5%;
+    }
+
+}
+
+@media (max-width: 480px) {
+    #header {
+        width: 100%;
+    }
+
+    #pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    #bio {
+        padding: 10px;
+    }
+
+    #biodiv {
+        margin-left: 42%;
+    }
+
+    #profile-modals {
+        font-size: 10px;
+        width: 20%;
+        margin-right: 25%;
+    }
+}
+#post-container{    
+    padding: 15px;
+    position: relative;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+}
+
+.post-div{
+    height: 450px;
+    width: 350px;
+    cursor: pointer;
+    transition:ease-in-out 0.3s;;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 4px 6px #3b5998;
+    
+}
+.post-div img{
+    height: 100%;
+    width: 100%;
+}
+.post-div:hover{
+    position: relative;
+    height: 500px;
+    width: 370px;
+}
+
+@media (max-width: 1585px) {
+
+  
+    
+    .post-div{
+        height: 300px;
+        width: 250px;
+        
+       
+        
+    }
+    .post-div img{
+        height: 100%;
+        width: 100%;
+    }
+    .post-div:hover{
+        position: relative;
+        height: 350px;
+        width: 270px;
+    }
+
+
+}
+
+@media (max-width: 800px) {
+
+  
+    #post-container{
+        width: 90%;
+    }
+  
+}
+
+@media (max-width: 768px) {
+
+  
+    #post-container{
+        width: 75%;
+    }
+  
+}
+
+
+@media (max-width: 723px) {
+
+  
+    #post-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .post-div{
+        margin-left: 1%;
+        height: 500px;
+        width: 88%;     
+    }
+  
+}
+
+
+
+@media (max-width: 591px) {
+
+  
+    #post-container{
+        width: 100%;
+
+    }
+    .post-div{
+        margin-left: 1%;
+        height: 450px;
+        width: 98%;     
+    }
+  
+}
+
+.loader {
+    width: 5rem;
+    height: 5rem;
+    border: 0.6rem solid #999;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: loader 500ms linear infinite;
+}
+
+@keyframes loader {
+    to {
+        transform: rotate(360deg);
+    }
+}

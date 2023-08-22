@@ -14,7 +14,7 @@ export default function Login() {
         password: '',
          };
     const navigate=useNavigate();
-    const {setTitle}=useContext(StatesProvider);
+    const {setTitle, socket, loginEmail}=useContext(StatesProvider);
     const [formValues, setFormValues] = useState(initialFormState);
 
     const handleSubmit = async (e) => {
@@ -38,9 +38,10 @@ export default function Login() {
         else {
           
           Successnotify();
-          document.cookie=`authToken=${ans.authToken}`;
-          document.cookie=`userEmail=${formValues.email}`;
-          console.log(ans);
+          document.cookie = `authToken=${ans.authToken}; expires=Fri, 31 Dec 9999 23:59:59 GMT; Secure; SameSite=None;`;
+          document.cookie = `userEmail=${formValues.email}; expires=Fri, 31 Dec 9999 23:59:59 GMT; Secure; SameSite=None;`;
+         
+                
           navigate('/');
         }
     }

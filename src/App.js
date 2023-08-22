@@ -5,7 +5,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import States from './States/states';
-
 import Home from './Screens/Home';
 import Login from './Screens/login';
 import Signup from './Screens/Signup';
@@ -15,9 +14,13 @@ import Notification from './Screens/Notifications'
 import Timeline from './Screens/Timeline'
 import Profile from './Screens/Profile'
 import Messages from './Screens/Messages'
-import { useEffect } from 'react';
+
+
+
+
 
 function App() {
+ 
 
   const router = createBrowserRouter([
     {
@@ -29,15 +32,19 @@ function App() {
         {path:"/notifications", element:<Notification />},
         {path:"/settings", element:<Settings />},
         {path:"/messages", element:<Messages />},
-        {path:"/profile", element:<Profile />}
+        
       ]
     },
+    {path:"/profile/:param", element:<Profile />},    
     { path: "/login", element: <Login /> },
     { path: "/signup", element: <Signup /> },
 
 
 
   ])
+
+
+
 
 
   return (

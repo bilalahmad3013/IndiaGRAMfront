@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { StatesProvider } from '../States/states'
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -10,6 +10,7 @@ export default function Settings() {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const userEmail = decodeURIComponent(getCookie("userEmail"));
   const navigate = useNavigate();
+  
 
   function getCookie(name) {
     const cookieArray = document.cookie.split(';');
@@ -42,12 +43,14 @@ export default function Settings() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          useremail: userEmail,
+          userEmail: userEmail,
         })
       })
 
       let ans = await response.json();
-    
+     
+      
+
 
       setFormData({
         fullname: ans.fullname,
@@ -55,7 +58,7 @@ export default function Settings() {
         private: ans.private,
         contactinfo: ans.contactinfo,
         bio: ans.bio
-    });
+      });
 
     }
     fetchData();
@@ -81,10 +84,10 @@ export default function Settings() {
       })
     })
 
-    if(!response.ok){
+    if (!response.ok) {
       Faliurnotify()
     }
-    else{
+    else {
       Successnotify()
     }
 
@@ -113,6 +116,74 @@ export default function Settings() {
   const [formData, setFormData] = useState(obj);
 
 
+  const [pic, setPic] = useState('');
+
+  const handlePic = (e) => {
+    setPic(e.target.files[0]);
+  }
+
+  const handlePicSubmit = async (e) => {
+    e.preventDefault();
+    const formDataPic = new FormData();
+    formDataPic.append('pic', pic);
+    formDataPic.append('userEmail', userEmail);
+
+   
+
+    let response = await fetch(`${BASE_URL}/userAvtar/upload`, {
+      method: "POST",
+
+      body: formDataPic
+    })
+
+    if (!response.ok) {
+      console.log('Something went wrong');
+      return;
+    }
+
+    const data = await response.json();
+    Successnotify()
+    getAvtar();
+  }
+
+
+  const [proPic, setProPic] = useState('');
+
+  const getAvtar = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/userAvtar/getAvtar`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userEmail: userEmail
+        })
+      });
+
+      if (!response.ok) {
+        console.log('Something went wrong');
+        return;
+      }
+      const urlObject = await response.json();
+      const picURL = urlObject.picURL;
+      if(picURL===undefined){
+        setProPic('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
+      }
+      else{
+        setProPic(picURL);
+      }
+      
+     
+    } catch (error) {
+      console.error('Error fetching avatar:', error);
+    }
+  };
+
+  useEffect(() => {
+    getAvtar();
+  }, []);
+
 
 
 
@@ -126,7 +197,7 @@ export default function Settings() {
 
   };
 
-  const Successnotify = () =>toast.info('Updated Successfully', {
+  const Successnotify = () => toast.info('Updated Successfully', {
     position: "top-center",
     autoClose: 5000,
     hideProgressBar: false,
@@ -135,18 +206,18 @@ export default function Settings() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
-const Faliurnotify=()=>toast.info('Fialed to update', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-});
+  const Faliurnotify = () => toast.info('Fialed to update', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
 
 
   return (
@@ -157,10 +228,16 @@ theme: "light",
           <div className="col-md-4">
             <div className="mb-4">
               <h3>Profile Photo</h3>
-              <img src='' alt="profile pic" className="img-thumbnail" id="profile-photo-preview" />
+              <div style={{height:"200px", width:"200px", backgroundSize: "cover" ,backgroundPosition:"center"}}>
+              <img style={{height:"100%", width:"100%", borderRadius:"50%"}} src={proPic} alt="profile pic" className="img-thumbnail" id="profile-photo-preview" />
+              </div>              
               <div className="mt-3">
-                <input type="file" accept="image/*" id="profile-photo-input" />
-                <label for="profile-photo-input" className="btn mt-1" style={{ background: "#3b5998", color: "white" }}>Upload Photo</label>
+                <form encType='multipart/form-data'>
+                  <input type="file" accept="image/*" id="profile-photo-input" onChange={handlePic} />
+                  <label for="profile-photo-input" className=" mt-1" style={{ background: "#3b5998", color: "white", borderRadius: "5px" }}>
+                    <button type='submit' onClick={handlePicSubmit} className="btn mt-1" style={{ background: "#3b5998", color: "white" }}>Upload Photo</button> </label>
+                </form>
+
               </div>
             </div>
           </div>

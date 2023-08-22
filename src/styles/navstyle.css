@@ -18,5 +18,10 @@
     padding: 5px;
     animation: borderBottomAnimation 0.3s ease forwards;
   }
+
+  #list-nav:hover{
+    background-color: #d9d9d9;
+    width: 100% !important;
+  }
   
   
