@@ -7,7 +7,7 @@ import { StatesProvider } from '../States/states'
 export default function Notify({closeModal }) {
 
     
- //  const {setN } = useContext(StatesProvider);
+   const {setN } = useContext(StatesProvider);
 
   const handleRead =()=>{
     setN(0);
