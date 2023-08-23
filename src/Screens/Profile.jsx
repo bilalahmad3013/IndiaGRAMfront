@@ -150,7 +150,7 @@ export default function Profile() {
 
         <div id='header' style={{ width: '70%', height: 'auto', display: "flex", flexDirection: 'column', alignItems: 'center', padding: "10px" }}>
 
-          <div id='pic' style={{ border: '1px solid black', width: "250px", height: "250px", borderRadius: "50%" }}>
+          <div id='pic' style={{ width: "250px", height: "250px", borderRadius: "50%" , boxShadow:"0px 0px 2px 4px #3b5998"}}>
             <img src={BASE_URL + pic} style={{ height: "100%", width: "100%", borderRadius: "50%" }} alt="" />
           </div>
 
@@ -207,7 +207,7 @@ export default function Profile() {
         endMessage={<h6>No more posts to show</h6>}
       >
         <div className='container' id='post-container'>
-          {posts.map((item, index) => (
+          {posts.map((item, index) => (            
             <Post key={index} elem={item} />
           ))}
         </div>

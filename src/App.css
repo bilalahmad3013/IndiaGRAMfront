@@ -73,3 +73,18 @@ body {
   content: none;
   display: none;
 }
+
+.notification-list{
+  height: 45px;
+  width: 60%;
+  display:flex;
+  justify-content: space-between;
+  padding: 6px; 
+  margin-left: 20%;
+  margin-right: 50px;  
+}
+.notification-list:hover{
+  background-color: rgb(224, 72, 72);
+  border-radius: 10px;
+  color: white;
+}

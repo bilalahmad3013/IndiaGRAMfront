@@ -10,7 +10,7 @@ export default function Settings() {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const userEmail = decodeURIComponent(getCookie("userEmail"));
   const navigate = useNavigate();
-  
+
 
   function getCookie(name) {
     const cookieArray = document.cookie.split(';');
@@ -48,8 +48,8 @@ export default function Settings() {
       })
 
       let ans = await response.json();
-     
-      
+
+
 
 
       setFormData({
@@ -128,7 +128,7 @@ export default function Settings() {
     formDataPic.append('pic', pic);
     formDataPic.append('userEmail', userEmail);
 
-   
+
 
     let response = await fetch(`${BASE_URL}/userAvtar/upload`, {
       method: "POST",
@@ -167,14 +167,14 @@ export default function Settings() {
       }
       const urlObject = await response.json();
       const picURL = urlObject.picURL;
-      if(picURL===undefined){
+      if (picURL === undefined) {
         setProPic('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
       }
-      else{
+      else {
         setProPic(picURL);
       }
-      
-     
+
+
     } catch (error) {
       console.error('Error fetching avatar:', error);
     }
@@ -228,9 +228,9 @@ export default function Settings() {
           <div className="col-md-4">
             <div className="mb-4">
               <h3>Profile Photo</h3>
-              <div style={{height:"200px", width:"200px", backgroundSize: "cover" ,backgroundPosition:"center"}}>
-              <img style={{height:"100%", width:"100%", borderRadius:"50%"}} src={proPic} alt="profile pic" className="img-thumbnail" id="profile-photo-preview" />
-              </div>              
+              <div style={{ height: "200px", width: "200px", backgroundSize: "cover", backgroundPosition: "center", padding: "0" }}>
+                <img style={{ height: "100%", width: "100%", borderRadius: "50%", border: "1px solid #3b5998", boxShadow: "0px 0px 2px 2px #3b5998" }} src={proPic} alt="profile pic" className="img-thumbnail" id="profile-photo-preview" />
+              </div>
               <div className="mt-3">
                 <form encType='multipart/form-data'>
                   <input type="file" accept="image/*" id="profile-photo-input" onChange={handlePic} />

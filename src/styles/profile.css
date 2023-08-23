@@ -76,6 +76,10 @@
     height: 100%;
     width: 100%;
 }
+.post-div video{
+    height: 100%;
+    width: 100%;
+}
 .post-div:hover{
     position: relative;
     height: 500px;
@@ -121,7 +125,7 @@
     #post-container{
         width: 75%;
     }
-  
+    
 }
 
 

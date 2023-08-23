@@ -23,36 +23,63 @@ export default function States({ children }) {
   const [title, setTitle] = useState("");
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [socket, setSocket] = useState(null);
-  const [n, setN]=useState(0);
+  const [notifications, setNotifications] = useState([]);
+  const [n, setN] = useState(0);
 
   useEffect(() => {
 
     const newSocket = socketIO.connect(BASE_URL);
-
-
     setSocket(newSocket);
-
-   
-
-    newSocket.on('followRequest', (data) => {
-       setN(n+1);
+    newSocket.on('followRequest', async (data) => {
+      setN((prevN) => prevN + 1);
+      let response = await fetch(`${BASE_URL}/Notifications/createNotification`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: loginEmail,
+          obj: {
+            sender: data.senderUserId,
+            msg: data.msg,
+            type:"follow"
+          }
+        })
+      })
+      if (!response.ok) {
+        console.log("Something went wrong in uploading the notification");
+      }
     });
 
-
+    const fetchNotifications = async () => {
+      let response = await fetch(`${BASE_URL}/Notifications`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: loginEmail
+        })
+      })
+      const ans = await response.json();
+      setN(ans.NotificationArray.length);
+    }
+    
+    fetchNotifications();
     return () => {
 
       if (newSocket) {
         newSocket.disconnect();
       }
     };
-  }, [BASE_URL]);
+  }, []);
 
 
 
 
   document.title = 'IndiaGram | ' + title;
   return (
-    <StatesProvider.Provider value={{ setTitle, socket, loginEmail , setN, n}}>
+    <StatesProvider.Provider value={{ setTitle, socket, loginEmail, setN, n, notifications, setNotifications }}>
       {children}
     </StatesProvider.Provider>
 
