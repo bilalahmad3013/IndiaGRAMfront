@@ -68,9 +68,9 @@ export default function States({ children }) {
     fetchNotifications();
     return () => {
 
-      // if (newSocket) {
-      //   newSocket.disconnect();
-      // }
+      if (newSocket) {
+        newSocket.disconnect();
+      }
     };
   }, []);
 
