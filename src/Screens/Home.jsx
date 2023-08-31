@@ -69,11 +69,11 @@ export default function Home() {
 
       <Col md={6} className="feed">
 
+        {/* <PostCard />
         <PostCard />
         <PostCard />
         <PostCard />
-        <PostCard />
-        <PostCard />
+        <PostCard /> */}
         
       </Col>
 
