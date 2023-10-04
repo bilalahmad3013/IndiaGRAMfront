@@ -8,7 +8,7 @@ export default function Messages({ user }) {
 
   return (
     <div>
-     
+     hiiiii
     </div>
   );
 }
