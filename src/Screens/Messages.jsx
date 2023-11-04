@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useContext, useState, useEffect } from 'react';
 import { StatesProvider } from '../States/states';
 import socketIO from 'socket.io-client';
