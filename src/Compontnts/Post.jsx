@@ -8,10 +8,10 @@ export default function Post({ elem }) {
   const contentType = elem.contentType || inferContentType(elem.picURL);
 
   function inferContentType(picURL) {
-    // Extract the file extension from the picURL
+  
     const fileExtension = picURL.split('.').pop().toLowerCase(); // Convert to lowercase for case insensitivity
 
-    // Determine the contentType based on the file extension
+   
     if (fileExtension === 'jpeg' || fileExtension === 'jpg') {
       return 'photo';
     } else if (fileExtension === 'mp4' || fileExtension === 'webm') {
