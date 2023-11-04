@@ -44,8 +44,8 @@ export default function Home() {
   return (
     <Container fluid>
     <Row>
-      <Col md={3} className="sidebar">       
-        <Card>        
+      <Col md={3} className="sidebar">
+        <Card>
           <Card.Body>
             <img
               src="profile-picture.jpg"
@@ -58,11 +58,11 @@ export default function Home() {
           </Card.Body>
         </Card>
 
-      
+
         <Card className="mt-3">
           <Card.Body>
             <h5>Suggestions for You</h5>
-         
+
           </Card.Body>
         </Card>
       </Col>
@@ -74,16 +74,16 @@ export default function Home() {
         <PostCard />
         <PostCard />
         <PostCard />
-        
+
       </Col>
 
       <Col md={3} className="sidebar">
-      
+
         <Card>
-         
+
           <Card.Body>
-            <h5>Trending</h5>
-           
+            <h5>Trending Now</h5>
+
           </Card.Body>
         </Card>
       </Col>
