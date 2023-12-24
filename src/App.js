@@ -28,6 +28,7 @@ function App() {
       element:<Navbar />,
       children:[
         {index:true, element:<Home/>},
+        {path:"/home", element:<Home />},
         {path:"/timeline", element:<Timeline />},
         {path:"/notifications", element:<Notification />},
         {path:"/settings", element:<Settings />},

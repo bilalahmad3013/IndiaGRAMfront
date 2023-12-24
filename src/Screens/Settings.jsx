@@ -264,7 +264,7 @@ export default function Settings() {
               </div>
               <div className="mb-3">
                 <label for="contactinfo-input" className="form-label">Contact Info</label>
-                <input type="text" className="form-control" id="contactinfo-input" name='contactinfo' value={formData.contactinfo} onChange={handleChange} placeholder="You can give your phone number or email to show other users you details" />
+                <input type="text" className="form-control" id="contactinfo-input" name='contactinfo' value={formData.contactinfo} onChange={handleChange} placeholder="You can give your phone number or email to show other users your details" />
               </div>
               <div className="mb-3 form-check">
                 <input type="checkbox" className="form-check-input" checked={formData.private} name='private' onChange={handleChange} id="private-account-input" />

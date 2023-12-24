@@ -45,6 +45,8 @@ export default function Notify({ closeModal }) {
     fetchNotifications();
   }, [])
 
+  console.log(notifications);
+
 
   return (
     <div className="modal-overlay">

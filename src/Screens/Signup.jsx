@@ -144,7 +144,7 @@ export default function Signup() {
 
                                 <div class="form-outline mb-4">
                                     <input type="password" id="form1Example23" class="form-control form-control-lg" name='confermPassword' value={formValues.confermPassword} onChange={handleChange}/>
-                                    <label class="form-label" for="form1Example23">Conferm Password</label>
+                                    <label class="form-label" for="form1Example23">Confirm Password</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block" >Sign Up</button>
                                 <div class="divider d-flex align-items-center my-4">
