@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import '../styles/modal.css'
 import { StatesProvider } from '../States/states'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -25,6 +27,52 @@ export default function Notify({ closeModal }) {
     }
 
   }
+
+  const handleAddFriend =async (reqUserEmail, reqUserName) => {
+    let response = await fetch(`${BASE_URL}/followers/addFriend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: loginEmail,
+        requestedUser: reqUserEmail
+      })
+    })
+    const ans = await response.json();
+    if(response.status===200){
+      Successnotify(reqUserName);
+    }
+
+  }
+  
+  
+  const handleDeleteFriend = () => {
+
+  }
+
+  const Successnotify = (name) => toast.info(`${name} is now your follower`, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
+  const Faliurnotify = () => toast.info('Fialed to update', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
 
 
 
@@ -65,8 +113,12 @@ export default function Notify({ closeModal }) {
                     return item.type === 'follow' ? (
                       <li key={i} className='notification-list'>
                         <span>
-                          <img style={{height:"30px", width:"30px", borderRadius:"50%"}} src={item.pic === '' ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' : BASE_URL+item.pic} alt="" />
-                          <strong> {item.name} </strong>{item.msg} </span><span><button style={{ borderRadius: "50%" }}><i class="fa-solid fa-check"></i></button> <button style={{ borderRadius: "50%" }}><i class="fa-solid fa-trash"></i></button></span>
+                          <img style={{ height: "30px", width: "30px", borderRadius: "50%" }} src={item.pic === '' ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' : BASE_URL + item.pic} alt="" />
+                          <strong> {item.name} </strong>{item.msg} </span><span>
+
+                          <button onClick={()=>handleAddFriend(item.email,item.name)} style={{ borderRadius: "50%" }}><i class="fa-solid fa-check"></i></button>
+
+                          <button onClick={handleDeleteFriend} style={{ borderRadius: "50%" }}><i class="fa-solid fa-trash"></i></button></span>
                       </li>
                     ) : (
                       <li key={i} className='notification-list'>
