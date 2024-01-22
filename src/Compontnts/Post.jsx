@@ -1,18 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Post({ elem }) {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-  console.log(elem);
 
-  // Determine the contentType based on the provided contentType or file extension
-  const contentType = elem.contentType || inferContentType(elem.picURL);
 
-  function inferContentType(picURL) {
+export default function Post({ elem, user, email ,id}) {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;  
   
-    const fileExtension = picURL.split('.').pop().toLowerCase(); // Convert to lowercase for case insensitivity
-
+  const elemF=elem
+  const contentType = elem.contentType || inferContentType(elemF.picURL); 
+  const navigate=useNavigate();
+  
+  function inferContentType(picURL) {      
+    const fileExtension = picURL.split('.').pop().toLowerCase();
    
-    if (fileExtension === 'jpeg' || fileExtension === 'jpg') {
+    if(fileExtension === 'jpeg' || fileExtension === 'jpg' || fileExtension === 'png') {
       return 'photo';
     } else if (fileExtension === 'mp4' || fileExtension === 'webm') {
       return 'video';
@@ -21,12 +22,16 @@ export default function Post({ elem }) {
     } else if (fileExtension === 'webp') {
       return 'webp';
     } else {
-      return 'unknown'; // Handle other file types as needed
+      return 'unknown';
     }
   }
 
+  const handleClick = () =>{
+    navigate('/postpage', {state:{user:user,email:email, id:id}})
+  }
+
   return (
-    <div className='post-div'>
+    <div className='post-div' onClick={handleClick}>
       {contentType === 'photo' ? (
         <img src={BASE_URL + elem.picURL} alt="" />
       ) : contentType === 'video' ? (
@@ -37,7 +42,7 @@ export default function Post({ elem }) {
         <img src={BASE_URL + elem.picURL} alt="" />
       ) : (
         <p>Unsupported content type</p>
-      )}
+      )}     
     </div>
   );
 }

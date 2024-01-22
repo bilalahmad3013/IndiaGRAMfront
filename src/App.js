@@ -1,4 +1,3 @@
-
 import './App.css';
 import {
   createBrowserRouter,
@@ -9,19 +8,14 @@ import Home from './Screens/Home';
 import Login from './Screens/login';
 import Signup from './Screens/Signup';
 import Navbar from './Compontnts/Navbar';
-import Settings from './Screens/Settings'
-import Notification from './Screens/Notifications'
-import Timeline from './Screens/Timeline'
-import Profile from './Screens/Profile'
-import Messages from './Screens/Messages'
+import Settings from './Screens/Settings';
+import Notification from './Screens/Notifications';
+import Timeline from './Screens/Timeline';
+import Profile from './Screens/Profile';
+import Messages from './Screens/Messages';
+import PostPage from './Screens/PostPage';
 
-
-
-
-
-function App() {
- 
-
+function App(){
   const router = createBrowserRouter([
     {
       path:'/',
@@ -33,29 +27,19 @@ function App() {
         {path:"/notifications", element:<Notification />},
         {path:"/settings", element:<Settings />},
         {path:"/messages", element:<Messages />},
-        
+        {path:"/postpage",element:<PostPage />}        
       ]
     },
     {path:"/profile/:param", element:<Profile />},    
     { path: "/login", element: <Login /> },
     { path: "/signup", element: <Signup /> },
-
-
-
   ])
-
-
-
-
-
   return (
     <States>
       <div>
-        <RouterProvider router={router} />
-      
+        <RouterProvider router={router}/>      
       </div>
     </States>
   );
 }
-
 export default App;

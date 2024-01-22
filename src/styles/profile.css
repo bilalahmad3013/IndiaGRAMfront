@@ -53,7 +53,8 @@
         margin-right: 25%;
     }
 }
-#post-container{    
+
+#post-container {
     padding: 15px;
     position: relative;
     justify-content: space-around;
@@ -63,24 +64,28 @@
     width: 70%;
 }
 
-.post-div{
+.post-div {
     height: 450px;
     width: 350px;
     cursor: pointer;
-    transition:ease-in-out 0.3s;;
+    transition: ease-in-out 0.3s;
+    ;
     margin-bottom: 20px;
     box-shadow: 0px 0px 4px 6px #3b5998;
-    
+
 }
-.post-div img{
+
+.post-div img {
     height: 100%;
     width: 100%;
 }
-.post-div video{
+
+.post-div video {
     height: 100%;
     width: 100%;
 }
-.post-div:hover{
+
+.post-div:hover {
     position: relative;
     height: 500px;
     width: 370px;
@@ -88,79 +93,69 @@
 
 @media (max-width: 1585px) {
 
-  
-    
-    .post-div{
+
+
+    .post-div {
         height: 300px;
         width: 250px;
-        
-       
-        
+
+
+
     }
-    .post-div img{
+
+    .post-div img {
         height: 100%;
         width: 100%;
     }
-    .post-div:hover{
+
+    .post-div:hover {
         position: relative;
         height: 350px;
         width: 270px;
     }
-
-
 }
 
 @media (max-width: 800px) {
-
-  
-    #post-container{
+    #post-container {
         width: 90%;
     }
-  
 }
 
 @media (max-width: 768px) {
-
-  
-    #post-container{
+    #post-container {
         width: 75%;
     }
-    
 }
 
 
 @media (max-width: 723px) {
-
-  
-    #post-container{
+    #post-container {
         width: 100%;
         align-items: center;
         justify-content: center;
 
     }
-    .post-div{
+
+    .post-div {
         margin-left: 1%;
         height: 500px;
-        width: 88%;     
+        width: 88%;
     }
-  
 }
 
 
 
 @media (max-width: 591px) {
-
-  
-    #post-container{
+    #post-container {
         width: 100%;
-
     }
-    .post-div{
+
+    .post-div {
         margin-left: 1%;
         height: 450px;
-        width: 98%;     
+        width: 98%;
     }
-  
+
 }
 
 .loader {
