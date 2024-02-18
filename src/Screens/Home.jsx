@@ -40,7 +40,11 @@ export default function Home() {
   if (socket) {
     socket.emit('newUser', { name: userEmail });
   }
-  setTitle("Home")
+  
+  setTimeout(()=>{
+    setTitle("Home")
+  },1000)
+  
   return (
     <Container fluid>
     <Row>

@@ -35,15 +35,13 @@ export default function Profile() {
   };
   const openModalFollowing = () => {
     setModalOpenFollowings(true);
-  };
+  }; 
+ 
 
-
-  setTitle("Profile");
   const [pic, setPic] = useState('');
   const [email, setEmail] = useState('');
   const [user, setUser] = useState('');
   const [loader, setLoader] = useState(false);
-  const [logedinUser, setLogedinUser] = useState('');
   const [showScreen, setShowScreen] = useState(true);
 
   function getCookie(name) {
@@ -217,11 +215,14 @@ export default function Profile() {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      setShowScreen(false)
-    }, 2000)
-  }, [])
+    const timeoutId = setTimeout(() => {
+      setShowScreen(false);
+      setTitle("Profile");
+    }, 1000);  
+    return () => clearTimeout(timeoutId);
+  }, []);
 
+  
   return (
     <>
       {
@@ -289,7 +290,7 @@ export default function Profile() {
                 >
                   <div className='container' id='post-container'>
                     {posts.map((item, index) => (
-                      <Post key={index} elem={item} user={user} email={email} id={item.id} />
+                      <Post key={index} elem={item} user={user} email={loginEmail} id={item.id} />
                     ))}
                   </div>                 
                 </InfiniteScroll>

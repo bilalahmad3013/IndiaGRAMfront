@@ -1,10 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-export default function Nothing() {
+export default function Nothing({ comp }) {
+  console.log(comp)
+  const commonStyles = {
+    height: "300px",
+    width: "100%",
+    display: "flex",
+    justifyContent: 'center',
+    alignItems: "center",
+    flexDirection: "column",
+    opacity: '0.6',
+  };
+
+  const marginTopValue = comp === "1" ? "-20px" : "180px";
+
   return (
-    <div style={{height:"300px", width:"100%", display:"flex",marginTop:"-20px", justifyContent:'center', alignItems:"center",flexDirection:"column"}}>
-       <i class="fa-solid fa-magnifying-glass fa-4x" style={{opacity:'0.6'}}></i>
-       <h3>Nothing to show here.</h3>
+    <div style={{ ...commonStyles, marginTop: marginTopValue }}>
+      <i className="fa-solid fa-magnifying-glass fa-4x"></i>
+      <h3>Nothing to show here.</h3>
     </div>
-  )
+  );
 }

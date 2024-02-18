@@ -9,7 +9,7 @@ export default function Messages({ user }) {
 
   return (
     <div>
-     hiiiii
+    It is not implemented yet
     </div>
   );
 }

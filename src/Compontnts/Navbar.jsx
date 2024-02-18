@@ -124,8 +124,6 @@ export default function Navbar() {
                         </div>
                       </div>
                     ))}
-                   
-
                 </div> : <></>
               }
           </div>
@@ -173,7 +171,7 @@ export default function Navbar() {
             </ul>
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
-                <NavLink style={({ isActive }) => isActive ? { borderBottom: "3px solid #3b5998" } : undefined} className="nav-link mx-2 text-uppercase" to="/messages"><span><i class="fa-solid fa-message"></i>Messages</span></NavLink >
+                <NavLink style={({ isActive }) => isActive ? { borderBottom: "3px solid #3b5998" } : undefined} className="nav-link mx-2 text-uppercase" to="/messages"><span><i className="fa-solid fa-message"></i>Messages</span></NavLink >
               </li>
               <li className="nav-item">
                 <NavLink style={({ isActive }) => isActive ? { borderBottom: "" } : undefined} className="nav-link mx-2 text-uppercase" to='' onClick={handleProfileClick}><span><i className="fa-solid fa-circle-user me-1"></i> Profile</span></NavLink >

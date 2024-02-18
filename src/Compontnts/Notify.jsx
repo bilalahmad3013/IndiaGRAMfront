@@ -170,7 +170,7 @@ export default function Notify({ closeModal }) {
                 <button className='btn btn-danger notify-button' onClick={handleRead}>Mark all as read</button>
               </>
             ) : (
-              <Nothing />
+              <Nothing  como="1"/>
             )
           ) : (
             <Loader />

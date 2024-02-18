@@ -24,7 +24,11 @@ export default function Settings() {
   }
 
   const { setTitle } = useContext(StatesProvider);
-  setTitle("Settings")
+
+  setTimeout(()=>{
+    setTitle("Settings")
+  },1000)
+  
 
   const [obj, setObj] = useState({
     fullname: '',
@@ -166,8 +170,7 @@ export default function Settings() {
         return;
       }
       const urlObject = await response.json();
-      const picURL = urlObject.picURL;
-      console.log(picURL);
+      const picURL = urlObject.picURL;     
       if (picURL === undefined) {
         setProPic('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
       }
@@ -235,7 +238,7 @@ export default function Settings() {
               <div className="mt-3">
                 <form encType='multipart/form-data'>
                   <input type="file" accept="image/*" id="profile-photo-input" onChange={handlePic} />
-                  <label for="profile-photo-input" className=" mt-1" style={{ background: "#3b5998", color: "white", borderRadius: "5px" }}>
+                  <label htmlFor="profile-photo-input" className=" mt-1" style={{ background: "#3b5998", color: "white", borderRadius: "5px" }}>
                     <button type='submit' onClick={handlePicSubmit} className="btn mt-1" style={{ background: "#3b5998", color: "white" }}>Upload Photo</button> </label>
                 </form>
 
@@ -248,28 +251,28 @@ export default function Settings() {
             <h3>Basic Details</h3>
             <form>
               <div className="mb-3">
-                <label for="bio-input" className="form-label">Bio</label>
-                <textarea className="form-control mb-4" id="bio-input" name='bio' value={formData.bio} onChange={handleChange} rows="4" maxlength="200"></textarea>
+                <label htmlFor="bio-input" className="form-label">Bio</label>
+                <textarea className="form-control mb-4" id="bio-input" name='bio' value={formData.bio} onChange={handleChange} rows="4" maxLength="200"></textarea>
               </div>
               <div className="mb-3">
-                <label for="username-input" className="form-label">Email</label>
-                <input type="email" className="form-control" id="username-input" value={userEmail} name='userEmail' placeholder="Your username" />
+                <label htmlFor="username-input" className="form-label">Email</label>
+                <input type="email" className="form-control" id="username-input" readOnly value={userEmail} name='userEmail' placeholder="Your username" />
               </div>
               <div className="mb-3">
-                <label for="name-input" className="form-label">Full Name</label>
+                <label htmlFor="name-input" className="form-label">Full Name</label>
                 <input type="text" className="form-control" id="name-input" name='fullname' value={formData.fullname} onChange={handleChange} placeholder="Your full name" />
               </div>
               <div className="mb-3">
-                <label for="dob-input" className="form-label">DOB</label>
+                <label htmlFor="dob-input" className="form-label">DOB</label>
                 <input type="date" className="form-control" id="dob-input" name='dob' value={formData.dob} onChange={handleChange} placeholder="Your DOB" />
               </div>
               <div className="mb-3">
-                <label for="contactinfo-input" className="form-label">Contact Info</label>
+                <label htmlFor="contactinfo-input" className="form-label">Contact Info</label>
                 <input type="text" className="form-control" id="contactinfo-input" name='contactinfo' value={formData.contactinfo} onChange={handleChange} placeholder="You can give your phone number or email to show other users your details" />
               </div>
               <div className="mb-3 form-check">
                 <input type="checkbox" className="form-check-input" checked={formData.private} name='private' onChange={handleChange} id="private-account-input" />
-                <label className="form-check-label" for="private-account-input">Private Account</label>
+                <label className="form-check-label" htmlFor="private-account-input">Private Account</label>
               </div>
               <button type="submit" onClick={handleSubmit} className="btn" style={{ background: "#3b5998", color: "white" }}>Save Changes</button>
               <button className='btn' style={{ background: "#3b5998", color: "white", marginLeft: "1%" }} onClick={handleLogout}>Logout</button>

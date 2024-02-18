@@ -20,8 +20,10 @@ export default function Timeline() {
     }
     return null;
   }
-
-  setTitle("Create");
+  setTimeout(()=>{
+    setTitle("Create");
+  },1000)
+  
 
   const initialObj = {
     media: null,

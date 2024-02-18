@@ -7,8 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
-    const BASE_URL=process.env.REACT_APP_BASE_URL;
-    console.log(BASE_URL);
+    const BASE_URL=process.env.REACT_APP_BASE_URL;  
     const initialFormState = {
         email: '',
         password: '',
@@ -54,8 +53,9 @@ export default function Login() {
         });
     }
 
-    
-    setTitle("SignIn")
+    setTimeout(()=>{
+      setTitle("SignIn")
+    },1000)
 
     const SignUp=()=>{
         navigate('/signup');
@@ -109,7 +109,7 @@ export default function Login() {
                                 <div className="d-flex justify-content-around align-items-center mb-4">
 
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                                        <input className="form-check-input" type="checkbox" value="" id="form1Example3"/>
                                         <label className="form-check-label" htmlFor="form1Example3"> Remember me </label>
                                     </div>
                                     <Link to="#!">Forgot password?</Link>

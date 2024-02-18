@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function Post({ elem, user, email ,id}) {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;  
-  
+  const BASE_URL = process.env.REACT_APP_BASE_URL;   
   const elemF=elem
   const contentType = elem.contentType || inferContentType(elemF.picURL); 
   const navigate=useNavigate();
@@ -27,7 +26,7 @@ export default function Post({ elem, user, email ,id}) {
   }
 
   const handleClick = () =>{
-    navigate('/postpage', {state:{user:user,email:email, id:id}})
+    navigate('/postpage', {state:{user:user,email:email, id:id , picURL:elem.picURL}})
   }
 
   return (
